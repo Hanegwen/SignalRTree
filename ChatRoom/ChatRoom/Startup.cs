@@ -20,7 +20,7 @@ namespace Microsoft.Azure.SignalR.Samples.ChatRoom
         {
             services.AddMvc();
             services.AddSignalR()
-                    .AddAzureSignalR("Endpoint=https://chatapp2018.service.signalr.net;AccessKey=+Qzv7c170xw8JEGNZ8tN1h72oHFDUWyIrG1f86QsLYQ=;Version=1.0;");
+                    .AddAzureSignalR("YOUR_ENDPOINT_SECRET_FROM_AZURE_HERE");
         }
 
         public void Configure(IApplicationBuilder app)
