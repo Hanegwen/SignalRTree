@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TreeFolder\DataTree.cs" />
+    <Compile Include="TreeFolder\INode.cs" />
+    <Compile Include="TreeFolder\Program.cs" />
+    <Compile Include="TreeFolder\TreeNode.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -8,13 +8,19 @@ namespace SignalRChatClient
 {
     public partial class MainWindow : Window
     {
+
+        DataTree tree = new DataTree();
+        string previousMessage = "";
+        int i = 0;
+
+
         HubConnection connection;
         public MainWindow()
         {
             InitializeComponent();
 
             connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5000/chat")
+                .WithUrl("168.61.189.194")
                 .Build();
 
             #region snippet_ClosedRestart
@@ -50,6 +56,8 @@ namespace SignalRChatClient
             {
                 messagesList.Items.Add(ex.Message);
             }
+
+            
         }
 
         private async void sendButton_Click(object sender, RoutedEventArgs e)
@@ -67,6 +75,32 @@ namespace SignalRChatClient
                 messagesList.Items.Add(ex.Message);                
             }
             #endregion
+        }
+
+        private void userTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            switch (e)
+            {
+                case "Add Node:":
+                    tree.AddNode(previousMessage);
+                    //BroadcastMessage("Server", tree.branches.Count.ToString());
+                    foreach (TreeNode branch in tree.branches)
+                    {
+                        //BroadcastMessage("Server", branch.Content);
+                        //Clients.All.SendAsync("Server", branch.Content);
+                    }
+
+                    //BroadcastMessage("Server", i++.ToString());
+                    //i++;
+                    break;
+                case "Remove Node":
+
+                    break;
+
+                default:
+
+                    break;
+            }
         }
     }
 }

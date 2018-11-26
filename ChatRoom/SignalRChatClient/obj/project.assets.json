@@ -1707,20 +1707,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Haneg\\.nuget\\packages\\": {}
+    "C:\\Users\\Michael.Morrone\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Columbia\\Senior\\Algorithms\\SignalRTree\\ChatRoom\\SignalRChatClient\\SignalRChatClient.csproj",
+      "projectUniqueName": "C:\\workspace\\SignalRTree\\ChatRoom\\SignalRChatClient\\SignalRChatClient.csproj",
       "projectName": "SignalRChatClient",
-      "projectPath": "E:\\Columbia\\Senior\\Algorithms\\SignalRTree\\ChatRoom\\SignalRChatClient\\SignalRChatClient.csproj",
-      "packagesPath": "C:\\Users\\Haneg\\.nuget\\packages\\",
-      "outputPath": "E:\\Columbia\\Senior\\Algorithms\\SignalRTree\\ChatRoom\\SignalRChatClient\\obj\\",
+      "projectPath": "C:\\workspace\\SignalRTree\\ChatRoom\\SignalRChatClient\\SignalRChatClient.csproj",
+      "packagesPath": "C:\\Users\\Michael.Morrone\\.nuget\\packages\\",
+      "outputPath": "C:\\workspace\\SignalRTree\\ChatRoom\\SignalRChatClient\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Haneg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Michael.Morrone\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
