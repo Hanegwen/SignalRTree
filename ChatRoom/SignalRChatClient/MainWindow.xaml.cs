@@ -102,6 +102,11 @@ namespace SignalRChatClient
                     break;
             }
         }
+
+        private void messagesList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
 #endregion
