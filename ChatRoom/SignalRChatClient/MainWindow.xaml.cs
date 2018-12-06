@@ -11,7 +11,7 @@ namespace SignalRChatClient
 
         DataTree tree = new DataTree();
         string previousMessage = "";
-        int i = 0;
+
 
 
         HubConnection connection;
@@ -20,7 +20,7 @@ namespace SignalRChatClient
             InitializeComponent();
 
             connection = new HubConnectionBuilder()
-                .WithUrl("168.61.189.194")
+                .WithUrl("http://localhost:5000/chat")
                 .Build();
 
             #region snippet_ClosedRestart
@@ -62,45 +62,40 @@ namespace SignalRChatClient
 
         private async void sendButton_Click(object sender, RoutedEventArgs e)
         {
-            #region snippet_ErrorHandling
-            try
+            
+            switch (messageTextBox.Text)
             {
-                #region snippet_InvokeAsync
-                await connection.InvokeAsync("BroadcastMessage", 
-                    userTextBox.Text, messageTextBox.Text);
-                #endregion
-            }
-            catch (Exception ex)
-            {                
-                messagesList.Items.Add(ex.Message);                
-            }
-            #endregion
-        }
-
-        private void userTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            switch (e)
-            {
+                case "Add Local Node":
+                    tree.AddNode(previousMessage);
+                    break;
                 case "Add Node:":
                     tree.AddNode(previousMessage);
-                    //BroadcastMessage("Server", tree.branches.Count.ToString());
-                    foreach (TreeNode branch in tree.branches)
-                    {
-                        //BroadcastMessage("Server", branch.Content);
-                        //Clients.All.SendAsync("Server", branch.Content);
-                    }
-
-                    //BroadcastMessage("Server", i++.ToString());
-                    //i++;
+                    messagesList.Items.Add("Add Local Node:");
+                    messagesList.Items.Add(previousMessage);
                     break;
                 case "Remove Node":
-
+                    tree.DeleteNode(previousMessage);
+                    messagesList.Items.Add("Remove Local Node:");
+                    messagesList.Items.Remove(previousMessage);
                     break;
-
+                case "Remove Local Node":
+                    tree.DeleteNode(previousMessage);
+                    break;
+                case "Show Tree":
+                    foreach (INode node in tree.branches)
+                    {
+                        messagesList.Items.Add(node.Content);
+                    }
+                    break;
                 default:
 
                     break;
             }
+        }
+
+        private void userTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            
         }
 
         private void messagesList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

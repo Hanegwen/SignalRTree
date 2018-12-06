@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SignalRChatClient.Tree;
+//using SignalRChatClient.Tree;
 
 namespace Microsoft.Azure.SignalR.Samples.ChatRoom
 {

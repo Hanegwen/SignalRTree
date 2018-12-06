@@ -4,9 +4,14 @@
     <UserSecretsId>chatroom</UserSecretsId>
     <RootNamespace>Microsoft.Azure.SignalR.Samples.ChatRoom</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Hub\localTree\**" />
+    <Content Remove="Hub\localTree\**" />
+    <EmbeddedResource Remove="Hub\localTree\**" />
+    <None Remove="Hub\localTree\**" />
+  </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Hub\localTree\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
