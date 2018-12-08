@@ -20,7 +20,7 @@ namespace SignalRChatClient
             InitializeComponent();
 
             connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5000/chat")
+                .WithUrl("http://chatroom20181105031349.azurewebsites.net/")
                 .Build();
 
             #region snippet_ClosedRestart
@@ -60,9 +60,9 @@ namespace SignalRChatClient
             
         }
 
-        private async void sendButton_Click(object sender, RoutedEventArgs e)
+        private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             switch (messageTextBox.Text)
             {
                 case "Add Local Node":
