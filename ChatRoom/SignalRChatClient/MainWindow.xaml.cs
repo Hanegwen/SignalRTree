@@ -18,7 +18,7 @@ namespace SignalRChatClient
         public MainWindow()
         {
             InitializeComponent();
-
+            //request.UserAgent = "Fiddler";
             connection = new HubConnectionBuilder()
                 .WithUrl("http://chatroom20181105031349.azurewebsites.net/")
                 .Build();
