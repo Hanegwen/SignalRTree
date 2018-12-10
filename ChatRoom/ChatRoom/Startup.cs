@@ -23,7 +23,8 @@ namespace Microsoft.Azure.SignalR.Samples.ChatRoom
         {
             services.AddMvc();
             services.AddSignalR()
-                    .AddAzureSignalR("Endpoint=https://chatapp2018.service.signalr.net;AccessKey=+Qzv7c170xw8JEGNZ8tN1h72oHFDUWyIrG1f86QsLYQ=;Version=1.0;");
+                    //.AddAzureSignalR("Endpoint=https://chatapp2018.service.signalr.net;AccessKey=+Qzv7c170xw8JEGNZ8tN1h72oHFDUWyIrG1f86QsLYQ=;Version=1.0;");
+                    .AddAzureSignalR("Endpoint=http://localhost:5000/");
         }
 
         public void Configure(IApplicationBuilder app)
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.SignalR.Samples.ChatRoom
             app.UseFileServer();
             app.UseAzureSignalR(routes =>
             {
-                routes.MapHub<Chat>("/chat");
+               routes.MapHub<Chat>("/chat");
             });
         }
     }

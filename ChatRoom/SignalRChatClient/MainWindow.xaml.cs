@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.Logging;
 
 namespace SignalRChatClient
 {
@@ -20,7 +21,10 @@ namespace SignalRChatClient
             InitializeComponent();
             //request.UserAgent = "Fiddler";
             connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5000/")
+                .WithUrl("http://localhost:5000/chat")
+                //.ConfigureLogging(logging => {
+                //    logging.SetMinimumLevel(LogLevel.Information);
+                //})
                 .Build();
 
             #region snippet_ClosedRestart
@@ -65,22 +69,23 @@ namespace SignalRChatClient
 
             switch (previousMessage)
             {
-                case "Add Local Node":
-                    tree.AddNode(messageTextBox.Text);
-                    break;
+                //Try removing Local Nodes and focus on just sending nodes
+                //case "Add Local Node":
+                   // tree.AddNode(messageTextBox.Text);
+                    //break;
                 case "Add Node:":
                     tree.AddNode(messageTextBox.Text);
                     messagesList.Items.Add(messageTextBox.Text);
-                    messagesList.Items.Add("Add Local Node:");
+                    //messagesList.Items.Add("Add Local Node:");
                     break;
                 case "Remove Node":
                     tree.DeleteNode(messageTextBox.Text);
                     messagesList.Items.Remove(messageTextBox.Text);
-                    messagesList.Items.Add("Remove Local Node:");
+                    //messagesList.Items.Add("Remove Local Node:");
                     break;
-                case "Remove Local Node":
-                    tree.DeleteNode(messageTextBox.Text);
-                    break;
+                //case "Remove Local Node":
+                   // tree.DeleteNode(messageTextBox.Text);
+                    //break;
                 case "Show Tree":
                     foreach (INode node in tree.branches)
                     {

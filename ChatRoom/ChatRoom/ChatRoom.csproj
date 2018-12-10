@@ -19,8 +19,4 @@
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.5" />
     <PackageReference Include="Microsoft.Azure.SignalR" Version="1.0.2" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SignalRChatClient\SignalRChatClient.csproj" />
-  </ItemGroup>
 </Project>
