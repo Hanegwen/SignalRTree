@@ -70,13 +70,13 @@ namespace SignalRChatClient
                     break;
                 case "Add Node:":
                     tree.AddNode(messageTextBox.Text);
-                    messagesList.Items.Add("Add Local Node:");
                     messagesList.Items.Add(messageTextBox.Text);
+                    messagesList.Items.Add("Add Local Node:");
                     break;
                 case "Remove Node":
                     tree.DeleteNode(messageTextBox.Text);
-                    messagesList.Items.Add("Remove Local Node:");
                     messagesList.Items.Remove(messageTextBox.Text);
+                    messagesList.Items.Add("Remove Local Node:");
                     break;
                 case "Remove Local Node":
                     tree.DeleteNode(messageTextBox.Text);
