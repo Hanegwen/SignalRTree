@@ -20,7 +20,7 @@ namespace SignalRChatClient
             InitializeComponent();
             //request.UserAgent = "Fiddler";
             connection = new HubConnectionBuilder()
-                .WithUrl("http://chatroom20181105031349.azurewebsites.net/")
+                .WithUrl("http://localhost:5000/")
                 .Build();
 
             #region snippet_ClosedRestart
@@ -63,23 +63,23 @@ namespace SignalRChatClient
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
 
-            switch (messageTextBox.Text)
+            switch (previousMessage)
             {
                 case "Add Local Node":
-                    tree.AddNode(previousMessage);
+                    tree.AddNode(messageTextBox.Text);
                     break;
                 case "Add Node:":
-                    tree.AddNode(previousMessage);
+                    tree.AddNode(messageTextBox.Text);
                     messagesList.Items.Add("Add Local Node:");
-                    messagesList.Items.Add(previousMessage);
+                    messagesList.Items.Add(messageTextBox.Text);
                     break;
                 case "Remove Node":
-                    tree.DeleteNode(previousMessage);
+                    tree.DeleteNode(messageTextBox.Text);
                     messagesList.Items.Add("Remove Local Node:");
-                    messagesList.Items.Remove(previousMessage);
+                    messagesList.Items.Remove(messageTextBox.Text);
                     break;
                 case "Remove Local Node":
-                    tree.DeleteNode(previousMessage);
+                    tree.DeleteNode(messageTextBox.Text);
                     break;
                 case "Show Tree":
                     foreach (INode node in tree.branches)
@@ -91,6 +91,8 @@ namespace SignalRChatClient
 
                     break;
             }
+
+            previousMessage = messageTextBox.Text;
         }
 
         private void userTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
