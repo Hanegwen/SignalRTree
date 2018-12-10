@@ -38,6 +38,7 @@ namespace SignalRChatClient
 
         private async void connectButton_Click(object sender, RoutedEventArgs e)
         {
+            sendButton.IsEnabled = true;
             #region snippet_ConnectionOn
             connection.On<string, string>("broadcastMessage", (user, message) =>
             {
@@ -48,17 +49,20 @@ namespace SignalRChatClient
                 });
             });
             #endregion
-
+            int count;
             try
             {
                 await connection.StartAsync();
+                count = tree.branches.Capacity;
                 messagesList.Items.Add("Connection started");
                 connectButton.IsEnabled = false;
                 sendButton.IsEnabled = true;
             }
             catch (Exception ex)
             {
+                count = tree.branches.Capacity;
                 messagesList.Items.Add(ex.Message);
+
             }
 
             
@@ -66,26 +70,21 @@ namespace SignalRChatClient
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-
+            string testString = messageTextBox.Text;
             switch (previousMessage)
             {
-                //Try removing Local Nodes and focus on just sending nodes
-                //case "Add Local Node":
-                   // tree.AddNode(messageTextBox.Text);
-                    //break;
+
                 case "Add Node:":
                     tree.AddNode(messageTextBox.Text);
                     messagesList.Items.Add(messageTextBox.Text);
-                    //messagesList.Items.Add("Add Local Node:");
+                    
                     break;
                 case "Remove Node":
                     tree.DeleteNode(messageTextBox.Text);
                     messagesList.Items.Remove(messageTextBox.Text);
-                    //messagesList.Items.Add("Remove Local Node:");
+                    
                     break;
-                //case "Remove Local Node":
-                   // tree.DeleteNode(messageTextBox.Text);
-                    //break;
+
                 case "Show Tree":
                     foreach (INode node in tree.branches)
                     {
@@ -106,6 +105,11 @@ namespace SignalRChatClient
         }
 
         private void messagesList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MessageTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
 
         }
